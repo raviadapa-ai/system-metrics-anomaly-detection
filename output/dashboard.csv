@@ -1,0 +1,4 @@
+server,cpu_mean,mem_mean,lat_p95,incidents
+web-01,60.2,64.4,23.2,3
+app-01,72.6,77.6,32.5,3
+db-01,44.9,55.4,15.0,1
