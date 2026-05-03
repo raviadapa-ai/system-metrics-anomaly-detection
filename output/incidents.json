@@ -1,15 +1,57 @@
 {
     "web-01": [
-        45,
-        46,
-        47
+        {
+            "timestamp": "2026-01-01 00:45:00",
+            "minute": 45,
+            "cpu": 91.0,
+            "memory": 92.0,
+            "latency": 85.0
+        },
+        {
+            "timestamp": "2026-01-01 00:46:00",
+            "minute": 46,
+            "cpu": 94.0,
+            "memory": 95.0,
+            "latency": 110.0
+        },
+        {
+            "timestamp": "2026-01-01 00:47:00",
+            "minute": 47,
+            "cpu": 89.0,
+            "memory": 90.0,
+            "latency": 92.0
+        }
     ],
     "app-01": [
-        120,
-        121,
-        122
+        {
+            "timestamp": "2026-01-01 02:00:00",
+            "minute": 120,
+            "cpu": 95.0,
+            "memory": 97.0,
+            "latency": 120.0
+        },
+        {
+            "timestamp": "2026-01-01 02:01:00",
+            "minute": 121,
+            "cpu": 98.0,
+            "memory": 99.0,
+            "latency": 145.0
+        },
+        {
+            "timestamp": "2026-01-01 02:02:00",
+            "minute": 122,
+            "cpu": 93.0,
+            "memory": 95.0,
+            "latency": 118.0
+        }
     ],
     "db-01": [
-        146
+        {
+            "timestamp": "2026-01-01 02:26:00",
+            "minute": 146,
+            "cpu": 54.7,
+            "memory": 51.8,
+            "latency": 7.3
+        }
     ]
 }

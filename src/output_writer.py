@@ -24,7 +24,7 @@ def save_metrics(server_names, cpu, memory, latency, filename):
     df = pd.DataFrame(rows)
     df.to_csv(f"data/{filename}", index=False)
 
-    print(f"Saved: data/{filename}")
+    print(f"\n Saved: data/{filename}")
 
 
 # -------------------------------
