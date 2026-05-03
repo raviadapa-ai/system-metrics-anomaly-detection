@@ -147,44 +147,76 @@ python main.py
 
 ### 🔹 Baseline Profile
 
-```id="out01"
+=========== BASELINE PROFILE ===========
+
 web-01
  CPU : mean=59.7, std=4.3, p95=66.8
  MEM : mean=63.9, std=7.9, p95=77.9
  LAT : mean=17.9, std=3.0, p95=22.8
-```
 
----
+app-01
+ CPU : mean=72.2, std=6.1, p95=82.4
+ MEM : mean=77.5, std=10.0, p95=94.8
+ LAT : mean=25.0, std=4.3, p95=31.5
 
+db-01
+ CPU : mean=44.9, std=4.1, p95=51.3
+ MEM : mean=55.4, std=5.8, p95=63.9
+ LAT : mean=11.8, std=2.1, p95=15.0
+
+Saved: output/baseline.json
+
+Saved: data/metrics_with_failures.csv
+ 
 ### 🔹 Anomaly Detection
 
-```id="out02"
-web-01
-cpu alerts     : [45, 46, 47]
-memory alerts  : [45, 46, 47]
-latency alerts : [45, 46, 47]
-```
 
----
+======= ANOMALY DETECTION REPORT =======
+
+web-01
+cpu alerts     : [45, 46, 47, 139]
+memory alerts  : [40, 45, 46, 47, 89, 91, 129, 136, 153, 156]
+latency alerts : [45, 46, 47]
+
+app-01
+cpu alerts     : [46, 56, 68, 113, 120, 121, 122, 160]
+memory alerts  : [1, 2, 5, 7, 16, 17, 19, 20, 21, 25, 26, 33, 34, 35, 37, 40, 42, 49, 50, 51, 53, 62, 63, 76, 77, 78, 84, 85, 101, 103, 108, 109, 111, 117, 118, 120, 121, 122, 126, 127, 129, 132, 145, 152, 161, 166, 168, 175]
+latency alerts : [48, 120, 121, 122, 177]
+
+db-01
+cpu alerts     : [15, 30, 51, 93, 119, 144, 146, 178]
+memory alerts  : [5, 19, 47, 49, 57, 124, 126, 153, 177]
+latency alerts : [6, 16, 33, 36, 68, 81, 94, 138, 146, 176]
 
 ### 🔹 Correlated Incidents
 
-```id="out03"
-web-01 - CONFIRMED INCIDENTS:
-minute 45 | cpu: 91.0% | mem: 92.0% | lat: 85 ms
-```
+--------- Correlated Incidents ---------
 
----
+web-01 - confirmed incidents:
+2026-01-01 00:45:00 | cpu: 91.0% | mem: 92.0% | lat: 85.0 ms
+2026-01-01 00:46:00 | cpu: 94.0% | mem: 95.0% | lat: 110.0 ms
+2026-01-01 00:47:00 | cpu: 89.0% | mem: 90.0% | lat: 92.0 ms
+
+app-01 - confirmed incidents:
+2026-01-01 02:00:00 | cpu: 95.0% | mem: 97.0% | lat: 120.0 ms
+2026-01-01 02:01:00 | cpu: 98.0% | mem: 99.0% | lat: 145.0 ms
+2026-01-01 02:02:00 | cpu: 93.0% | mem: 95.0% | lat: 118.0 ms
+
+db-01 - confirmed incidents:
+2026-01-01 02:26:00 | cpu: 54.7% | mem: 51.8% | lat: 7.3 ms
+Saved: output/incidents.json
 
 ### 🔹 Dashboard Summary
 
-| Server | CPU Mean | Mem Mean | Latency P95 | Incidents |
-| ------ | -------- | -------- | ----------- | --------- |
-| web-01 | 60.2     | 64.4     | 23.2        | 11        |
-| app-01 | 72.6     | 77.6     | 32.5        | 55        |
-| db-01  | 44.9     | 55.4     | 15.0        | 26        |
+================ SUMMARY DASHBOARD ================
 
----
+server     cpu_mean   mem_mean   lat_p95    incidents
+-----------------------------------------------------------------
+web-01     60.2       64.4       23.2       11
+app-01     72.6       77.6       32.5       55
+db-01      44.9       55.4       15.0       26
+Saved: output/dashboard.csv
+
 
 ## 🧪 Data Outputs
 
