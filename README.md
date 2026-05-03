@@ -1,3 +1,5 @@
+> ⚠️ Note: This project focuses on **intra-server anomaly correlation** using synthetic metrics with controlled failure injection.
+
 # ⚙️ System Metrics Anomaly Detection
 
 A lightweight observability simulator that generates system metrics (CPU, Memory, Latency), detects anomalies using statistical techniques, and correlates incidents — built using NumPy.
@@ -27,6 +29,62 @@ Correlation Engine (Multi-signal)
         ↓
 Dashboard + Output Files
 ```
+
+---
+
+## 🧠 Data & Correlation Design
+
+### 📊 Metric Generation
+The system generates three types of system metrics:
+- CPU usage (%)
+- Memory usage (%)
+- Latency (ms)
+
+These metrics are **synthetically generated using independent statistical distributions**, meaning they are not inherently correlated under normal conditions.
+
+---
+
+### ⚠️ Failure Injection
+To simulate realistic system behavior, controlled failures are injected into the data.  
+During these failure windows, multiple metrics (CPU, memory, latency) are simultaneously elevated.
+
+This introduces **artificial correlation across metrics**, mimicking real-world incidents.
+
+---
+
+### 🔍 Anomaly Detection
+Each metric is analyzed independently using:
+- Static thresholds
+- Z-score detection
+- IQR-based outlier detection
+
+---
+
+### 🔗 Correlation Strategy
+
+Correlation is performed **within each server only**, not across servers.
+
+For a given server:
+- CPU, memory, and latency anomalies are combined
+- An incident is confirmed when **multiple signals agree (2+ rule)**
+
+---
+
+### 🚫 Limitations
+
+- No cross-server correlation (distributed/system-wide failures are not detected)
+- Metrics are synthetic and do not represent real production traffic patterns
+
+---
+
+### 🧭 Summary
+
+| Aspect | Approach |
+|-------|--------|
+| Metric dependency | Independent (before failure injection) |
+| Failure modeling | Multi-metric injection |
+| Correlation scope | Intra-server only |
+| Cross-server detection | Not implemented |
 
 ---
 
