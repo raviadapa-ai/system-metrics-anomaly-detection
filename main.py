@@ -22,6 +22,13 @@ from src.output_writer import (
 
 # Step 1
 server_names, cpu, memory, latency, timestamps = generate_metrics()
+print(f"servers: {server_names}")
+print(f"cpu shape: {cpu.shape}")
+print("cpu metrics\n", cpu[:10].round(1)) # sample - first 10 elements
+print(f"memory shape: {memory.shape}")
+print("memory metrics\n", memory[:10].round(1)) # sample -frist 10 elements
+print(f"latency shape: {latency.shape}")
+print("latency metrics:", latency[:10].round(1))
 
 # Step 2
 save_metrics(server_names, cpu, memory, latency, "metrics_clean.csv")
@@ -37,6 +44,7 @@ save_metrics(server_names, cpu, memory, latency, "metrics_with_failures.csv")
 # Step 4
 print_anomaly_report(server_names, cpu, memory, latency)
 print_raw_anomalies(server_names, cpu, memory, latency, timestamps)
+
 # Step 5
 results = correlate_incidents(cpu, memory, latency, server_names, timestamps)
 save_incidents(results)
